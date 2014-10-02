@@ -32,5 +32,16 @@ namespace EffectiveCSharp4Test
 			var test = new { Name = "Me", Numbers = list.Select(x => x) };
 			Console.WriteLine(test);
 		}
+
+		[Test]
+		public void ToStringReturnsName()
+		{
+			var customer = new CustomerWithIFoFormattable { 
+				Name = "Hidari", 
+				Revenue = 10000000000, 
+				ContactPhone = "09012345678" };
+
+			customer.ToString("n", null).Is("Hidari");
+		}
 	}
 }
