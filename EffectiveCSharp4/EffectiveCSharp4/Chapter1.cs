@@ -35,6 +35,8 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 		{
 			switch (format)
 			{
+				case"r":
+					return string.Format("{0,10:C}", this.Revenue);
 				case "n":
 				case "G":
 				default:

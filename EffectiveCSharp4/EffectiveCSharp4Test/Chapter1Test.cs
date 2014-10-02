@@ -33,15 +33,30 @@ namespace EffectiveCSharp4Test
 			Console.WriteLine(test);
 		}
 
-		[Test]
-		public void ToStringReturnsName()
+	}
+
+	[TestFixture]
+	public class Topic_ToString
+	{
+		CustomerWithIFoFormattable customer;
+		[SetUp]
+		public void Init()
 		{
-			var customer = new CustomerWithIFoFormattable { 
+			this.customer = new CustomerWithIFoFormattable{
 				Name = "Hidari", 
 				Revenue = 10000000000, 
 				ContactPhone = "09012345678" };
+		}
 
+		[Test]
+		public void ToStringReturnsName()
+		{
 			customer.ToString("n", null).Is("Hidari");
+		}
+		[Test]
+		public void ToStringReturnsRevenue()
+		{
+			customer.ToString("r", null).Is('\u00a5' + "10,000,000,000");
 		}
 	}
 }
