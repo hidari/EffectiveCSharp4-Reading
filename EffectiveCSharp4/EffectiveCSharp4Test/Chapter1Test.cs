@@ -64,5 +64,11 @@ namespace EffectiveCSharp4Test
 		{
 			customer.ToString("p", null).Is("    09012345678");
 		}
+
+		[Test]
+		public void ToStringRevenueAndPhone()
+		{
+			customer.ToString("rp", null).Is('\u00a5' + "10,000,000,000,     09012345678");
+		}
 	}
 }
