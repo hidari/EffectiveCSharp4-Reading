@@ -53,6 +53,13 @@ namespace EffectiveCSharp4Test
 		{
 			customer.ToString("n", null).Is("Hidari");
 		}
+		
+		[Test]
+		public void ToStringReturnsNameWhenNull()
+		{
+			customer.ToString(null, null).Is("Hidari");
+		}
+
 		[Test]
 		public void ToStringReturnsRevenue()
 		{
@@ -69,6 +76,11 @@ namespace EffectiveCSharp4Test
 		public void ToStringRevenueAndPhone()
 		{
 			customer.ToString("rp", null).Is('\u00a5' + "10,000,000,000,     09012345678");
+		}
+		[Test]
+		public void TostringReturnsRevenueAndName()
+		{
+			customer.ToString("rn", null).Is('\u00a5' + "10,000,000,000,               Hidari");
 		}
 	}
 }
