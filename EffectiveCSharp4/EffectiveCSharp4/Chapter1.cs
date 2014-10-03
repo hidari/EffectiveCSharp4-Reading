@@ -43,6 +43,8 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 					return string.Format("{0,10:C}, {1,15}", this.Revenue, this.ContactPhone);
 				case "rn":
 					return string.Format("{0,10:C}, {1,20}", this.Revenue, this.Name);
+				case "pr":
+					return string.Format("{0,15}, {1,10:C}", this.ContactPhone, this.Revenue);
 				case "n":
 				case "G":
 				default:
