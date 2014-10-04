@@ -39,6 +39,7 @@ namespace EffectiveCSharp4Test
 	public class Topic_ToString
 	{
 		CustomerWithIFoFormattable customer;
+
 		[SetUp]
 		public void Init()
 		{
@@ -94,6 +95,12 @@ namespace EffectiveCSharp4Test
 		public void Phone_Name()
 		{
 			customer.ToString("pn", null).Is("    09012345678,               Hidari");
+		}
+
+		[Test]
+		public void Name_Revenue()
+		{
+			customer.ToString("nr", null).Is("              Hidari, " + '\u00a5' + "10,000,000,000");
 		}
 	}
 }
