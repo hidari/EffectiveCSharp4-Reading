@@ -126,5 +126,11 @@ namespace EffectiveCSharp4Test
 		{
 			customer.ToString("prn", null).Is("    09012345678, " + '\u00a5' + "10,000,000,000,               Hidari");
 		}
+
+		[Test]
+		public void Phone_Name_Revenue()
+		{
+			customer.ToString("pnr", null).Is("    09012345678,               Hidari, " + '\u00a5' + "10,000,000,000");
+		}
 	}
 }
