@@ -144,5 +144,11 @@ namespace EffectiveCSharp4Test
 		{
 			customer.ToString("npr", null).Is("              Hidari,     09012345678, " + '\u00a5' + "10,000,000,000");
 		}
+
+		[Test]
+		public void IFormatProviderTest()
+		{
+			Assert.Fail();
+		}
 	}
 }

@@ -33,6 +33,15 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 
 		public string ToString(string format, IFormatProvider formatProvider)
 		{
+			if (formatProvider != null)
+			{
+				var fmt = formatProvider.GetFormat(this.GetType()) as ICustomFormatter;
+				if (fmt != null)
+				{
+					return fmt.Format(format, this, formatProvider);
+				}
+			}
+
 			switch (format)
 			{
 				case "r":
