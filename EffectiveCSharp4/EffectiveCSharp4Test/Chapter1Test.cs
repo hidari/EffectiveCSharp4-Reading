@@ -146,9 +146,9 @@ namespace EffectiveCSharp4Test
 		}
 
 		[Test]
-		public void IFormatProviderTest()
+		public void IFormattableTest()
 		{
-			Assert.Fail();
+			Console.WriteLine("Customer: {0}", customer.ToString("npr", null));
 		}
 	}
 }

@@ -80,4 +80,12 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 
 		}
 	}
+
+	public class MyCustomFormattr : IFormatProvider
+	{
+		public object GetFormat(Type formatType)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }
