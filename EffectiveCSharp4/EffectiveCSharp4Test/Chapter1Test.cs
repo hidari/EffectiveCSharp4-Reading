@@ -83,13 +83,13 @@ namespace EffectiveCSharp4Test
 		[Test]
 		public void TostringReturnsRevenueAndName()
 		{
-			customer.ToString("rn", null).Is('\u00a5' + "10,000,000,               Hidari");
+			customer.ToString("rn", null).Is(_expectedRevenue + ",               Hidari");
 		}
 
 		[Test]
 		public void Phone_Revenue()
 		{
-			customer.ToString("pr", null).Is("    09012345678, " + '\u00a5' + "10,000,000,000");
+			customer.ToString("pr", null).Is("    09012345678, " + _expectedRevenue);
 		}
 
 		[Test]
@@ -101,7 +101,7 @@ namespace EffectiveCSharp4Test
 		[Test]
 		public void Name_Revenue()
 		{
-			customer.ToString("nr", null).Is("              Hidari, " + '\u00a5' + "10,000,000,000");
+			customer.ToString("nr", null).Is("              Hidari, " + _expectedRevenue);
 		}
 
 		[Test]
@@ -113,37 +113,37 @@ namespace EffectiveCSharp4Test
 		[Test]
 		public void Revenue_Phone_Name()
 		{
-			customer.ToString("rpn", null).Is('\u00a5' + "10,000,000,000,     09012345678,               Hidari");
+			customer.ToString("rpn", null).Is(_expectedRevenue + ",     09012345678,               Hidari");
 		}
 
 		[Test]
 		public void Revenue_Name_Phone()
 		{
-			customer.ToString("rnp", null).Is('\u00a5' + "10,000,000,000,               Hidari,     09012345678");
+			customer.ToString("rnp", null).Is(_expectedRevenue + ",               Hidari,     09012345678");
 		}
 
 		[Test]
 		public void Phone_Revenue_Name()
 		{
-			customer.ToString("prn", null).Is("    09012345678, " + '\u00a5' + "10,000,000,000,               Hidari");
+			customer.ToString("prn", null).Is("    09012345678, " + _expectedRevenue + ",               Hidari");
 		}
 
 		[Test]
 		public void Phone_Name_Revenue()
 		{
-			customer.ToString("pnr", null).Is("    09012345678,               Hidari, " + '\u00a5' + "10,000,000,000");
+			customer.ToString("pnr", null).Is("    09012345678,               Hidari, " + _expectedRevenue);
 		}
 
 		[Test]
 		public void Name_Revenue_Phone()
 		{
-			customer.ToString("nrp", null).Is("              Hidari, " + '\u00a5' + "10,000,000,000,     09012345678");
+			customer.ToString("nrp", null).Is("              Hidari, " + _expectedRevenue + ",     09012345678");
 		}
 
 		[Test]
 		public void Name_Phone_Revenue()
 		{
-			customer.ToString("npr", null).Is("              Hidari,     09012345678, " + '\u00a5' + "10,000,000,000");
+			customer.ToString("npr", null).Is("              Hidari,     09012345678, " + _expectedRevenue);
 		}
 
 		[Test]
