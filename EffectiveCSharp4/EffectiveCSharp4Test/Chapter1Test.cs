@@ -39,7 +39,7 @@ namespace EffectiveCSharp4Test
 	public class Topic_ToString
 	{
 		CustomerWithIFoFormattable customer;
-		private readonly string _expectedRevenue = '\u00a5' + "10,000,000,000";
+		private readonly string _expectedRevenue = '\u00a5' + "10,000,000";
 
 		[SetUp]
 		public void Init()
@@ -65,7 +65,7 @@ namespace EffectiveCSharp4Test
 		[Test]
 		public void ToStringReturnsRevenue()
 		{
-			customer.ToString("r", null).Is('\u00a5' + "10,000,000,000");
+			customer.ToString("r", null).Is('\u00a5' + "10,000,000");
 		}
 
 		[Test]
@@ -77,13 +77,13 @@ namespace EffectiveCSharp4Test
 		[Test]
 		public void ToStringRevenueAndPhone()
 		{
-			customer.ToString("rp", null).Is('\u00a5' + "10,000,000,000,     09012345678");
+			customer.ToString("rp", null).Is('\u00a5' + "10,000,000,     09012345678");
 		}
 		
 		[Test]
 		public void TostringReturnsRevenueAndName()
 		{
-			customer.ToString("rn", null).Is('\u00a5' + "10,000,000,000,               Hidari");
+			customer.ToString("rn", null).Is('\u00a5' + "10,000,000,               Hidari");
 		}
 
 		[Test]
