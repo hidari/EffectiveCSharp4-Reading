@@ -83,9 +83,32 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 
 	public class MyCustomFormattr : IFormatProvider
 	{
+		#region IFormatProvider
 		public object GetFormat(Type formatType)
 		{
-			throw new NotImplementedException();
+			if (formatType == typeof(ICustomFormatter) || formatType == typeof(CustomerWithIFoFormattable))
+			{
+				return new MyCustomFormatProvider();
+			}
+
+			return null;
+		}
+		#endregion
+
+		private class MyCustomFormatProvider : ICustomFormatter
+		{
+			#region ICustomFormatter
+			public string Format(string format, object arg, IFormatProvider formatProvider)
+			{
+				var c = arg as CustomerWithIFoFormattable;
+				if (c==null)
+				{
+					return arg.ToString();
+				}
+
+				return string.Format("{0,50}, {1,15}, {2,10:C}", c.Name, c.ContactPhone, c.Revenue);
+			}
+			#endregion
 		}
 	}
 }
