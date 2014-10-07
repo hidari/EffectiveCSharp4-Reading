@@ -65,7 +65,7 @@ namespace EffectiveCSharp4Test
 		[Test]
 		public void ToStringReturnsRevenue()
 		{
-			customer.ToString("r", null).Is('\u00a5' + "10,000,000");
+			customer.ToString("r", null).Is(_expectedRevenue);
 		}
 
 		[Test]
@@ -77,7 +77,7 @@ namespace EffectiveCSharp4Test
 		[Test]
 		public void ToStringRevenueAndPhone()
 		{
-			customer.ToString("rp", null).Is('\u00a5' + "10,000,000,     09012345678");
+			customer.ToString("rp", null).Is( _expectedRevenue + ",     09012345678");
 		}
 		
 		[Test]
