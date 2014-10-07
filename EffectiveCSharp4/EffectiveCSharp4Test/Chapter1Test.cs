@@ -39,13 +39,14 @@ namespace EffectiveCSharp4Test
 	public class Topic_ToString
 	{
 		CustomerWithIFoFormattable customer;
+		private readonly string _expectedRevenue = '\u00a5' + "10,000,000,000";
 
 		[SetUp]
 		public void Init()
 		{
 			this.customer = new CustomerWithIFoFormattable{
 				Name = "Hidari", 
-				Revenue = 10000000000, 
+				Revenue = 10000000, 
 				ContactPhone = "09012345678" };
 		}
 
