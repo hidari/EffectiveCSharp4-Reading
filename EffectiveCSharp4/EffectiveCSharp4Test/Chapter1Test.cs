@@ -50,18 +50,13 @@ namespace EffectiveCSharp4Test
 				ContactPhone = "09012345678" };
 		}
 
-		[Test]
-		public void ToStringReturnsName()
+		[TestCase("n", "Hidari")]
+		[TestCase(null, "Hidari")]
+		public void ToStringWithFormatString(string format, string expect)
 		{
-			customer.ToString("n", null).Is("Hidari");
+			customer.ToString(format, null).Is(expect);
 		}
 		
-		[Test]
-		public void ToStringReturnsNameWhenNull()
-		{
-			customer.ToString(null, null).Is("Hidari");
-		}
-
 		[Test]
 		public void ToStringReturnsRevenue()
 		{
