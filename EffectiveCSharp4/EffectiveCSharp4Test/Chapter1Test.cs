@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EffectiveCSharp4Test
+namespace EffectiveCSharp4Test.Chapter1.Topic5
 {
 	[TestFixture]
 	public class Chapter1Test
