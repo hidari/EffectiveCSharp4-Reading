@@ -52,6 +52,8 @@ namespace EffectiveCSharp4Test
 
 		[TestCase("n", "Hidari")]
 		[TestCase(null, "Hidari")]
+		[TestCase("p", "    09012345678")]
+		[TestCase("pn", "    09012345678,               Hidari")]
 		public void ToStringWithFormatString(string format, string expect)
 		{
 			customer.ToString(format, null).Is(expect);
@@ -61,12 +63,6 @@ namespace EffectiveCSharp4Test
 		public void ToStringReturnsRevenue()
 		{
 			customer.ToString("r", null).Is(_expectedRevenue);
-		}
-
-		[Test]
-		public void ToStringReturnsContactPhone()
-		{
-			customer.ToString("p", null).Is("    09012345678");
 		}
 
 		[Test]
@@ -85,12 +81,6 @@ namespace EffectiveCSharp4Test
 		public void Phone_Revenue()
 		{
 			customer.ToString("pr", null).Is("    09012345678, " + _expectedRevenue);
-		}
-
-		[Test]
-		public void Phone_Name()
-		{
-			customer.ToString("pn", null).Is("    09012345678,               Hidari");
 		}
 
 		[Test]
