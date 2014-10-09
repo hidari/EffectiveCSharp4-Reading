@@ -112,4 +112,15 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 			#endregion
 		}
 	}
+
+	public class ShipGirl
+	{
+		public string ShipKind { get; set; }
+		public string Name { get; set; }
+
+		public override string ToString()
+		{
+			return this.Name;
+		}
+	}
 }

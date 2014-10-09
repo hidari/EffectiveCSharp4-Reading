@@ -138,4 +138,15 @@ namespace EffectiveCSharp4Test.Chapter1.Topic5
 			Console.WriteLine("Custom Formatted Customer: {0}", customer.ToString("", new MyCustomFormattr()));
 		}
 	}
+
+	[TestFixture]
+	public class ShipGirlTest
+	{
+		[Test]
+		public void ToStringWithNoArg()
+		{
+			var girl = new ShipGirl { Name = "大和", ShipKind = "戦艦" };
+			girl.ToString().Is("大和");
+		}
+	}
 }
