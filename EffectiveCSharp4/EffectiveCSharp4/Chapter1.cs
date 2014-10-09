@@ -13,6 +13,7 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 		public decimal Revenue { get; set; }
 		public string ContactPhone { get; set; }
 	}
+
 	public class Customer_2
 	{
 		public string Name { get; set; }
