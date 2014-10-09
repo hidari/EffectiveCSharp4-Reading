@@ -113,7 +113,7 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 		}
 	}
 
-	public class ShipGirl
+	public class ShipGirl:IFormattable
 	{
 		public string ShipKind { get; set; }
 		public string Name { get; set; }
@@ -121,6 +121,24 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 		public override string ToString()
 		{
 			return this.Name;
+		}
+
+		public string ToString(string format, IFormatProvider formatProvider)
+		{
+			switch (format)
+			{
+				case "k":
+					return string.Format("艦種: {0,10}", this.ShipKind);
+				case "n":
+					return string.Format("艦名: {0,10}", this.Name);
+				case "nk":
+					return string.Format("艦名: {0,10}  艦種: {1,10}", this.Name, this.ShipKind);
+				case "kn":
+					return string.Format("艦種: {0,10}  艦名: {1,10}", this.ShipKind, this.Name);
+				case "G":
+				default:
+					return string.Format("{0,10}", this.Name);
+			}
 		}
 	}
 }
