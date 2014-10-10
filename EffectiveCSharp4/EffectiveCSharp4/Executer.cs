@@ -11,6 +11,8 @@ namespace EffectiveCSharp4
 	{
 		static void Main(string[] args)
 		{
+			var girl = new ShipGirl { Name = "金剛", ShipKind = "戦艦" };
+			Console.WriteLine(girl.ToString(null, new MyFormatter()));
 		}
 	}
 }

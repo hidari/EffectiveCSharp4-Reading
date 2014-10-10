@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EffectiveCSharp4.Chapter1.Topic5
 {
@@ -102,7 +97,7 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 			public string Format(string format, object arg, IFormatProvider formatProvider)
 			{
 				var c = arg as CustomerWithIFoFormattable;
-				if (c==null)
+				if (c == null)
 				{
 					return arg.ToString();
 				}
@@ -110,6 +105,72 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 				return string.Format("{0,50}, {1,15}, {2,10:C}", c.Name, c.ContactPhone, c.Revenue);
 			}
 			#endregion
+		}
+	}
+
+	public class ShipGirl : IFormattable
+	{
+		public string ShipKind { get; set; }
+		public string Name { get; set; }
+
+		public override string ToString()
+		{
+			return this.Name;
+		}
+
+		public string ToString(string format, IFormatProvider formatProvider)
+		{
+			if (formatProvider != null)
+			{
+				var fmt = formatProvider.GetFormat(this.GetType()) as ICustomFormatter;
+				if (fmt != null)
+				{
+					return fmt.Format(format, this, formatProvider);
+				}
+			}
+			switch (format)
+			{
+				case "k":
+					return string.Format("艦種: {0,10}", this.ShipKind);
+				case "n":
+					return string.Format("艦名: {0,10}", this.Name);
+				case "nk":
+					return string.Format("艦名: {0,10}  艦種: {1,10}", this.Name, this.ShipKind);
+				case "kn":
+					return string.Format("艦種: {0,10}  艦名: {1,10}", this.ShipKind, this.Name);
+				case "G":
+				default:
+					return string.Format("{0,10}", this.Name);
+			}
+		}
+	}
+
+	public class MyFormatter : IFormatProvider
+	{
+
+		public object GetFormat(Type formatType)
+		{
+			if (formatType == typeof(ICustomFormatter) || formatType == typeof(ShipGirl))
+			{
+				return new MyFormatProvider();
+			}
+
+			return null;
+		}
+
+		private class MyFormatProvider : ICustomFormatter
+		{
+
+			public string Format(string format, object arg, IFormatProvider formatProvider)
+			{
+				var c = arg as ShipGirl;
+				if (c == null)
+				{
+					return arg.ToString();
+				}
+
+				return string.Format("ShipName: {0,10}, ShipKind: {1,10}", c.Name, c.ShipKind);
+			}
 		}
 	}
 }

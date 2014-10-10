@@ -138,4 +138,40 @@ namespace EffectiveCSharp4Test.Chapter1.Topic5
 			Console.WriteLine("Custom Formatted Customer: {0}", customer.ToString("", new MyCustomFormattr()));
 		}
 	}
+
+	[TestFixture]
+	public class ShipGirlTest
+	{
+		ShipGirl girl;
+
+		[SetUp]
+		public void init()
+		{
+			girl = new ShipGirl { Name = "翔鶴", ShipKind = "正規空母" };
+		}
+
+		[Test]
+		public void ToStringWithNoArg()
+		{
+			var girl = new ShipGirl { Name = "大和", ShipKind = "戦艦" };
+			girl.ToString().Is("大和");
+		}
+
+		[TestCase("G", "        翔鶴")]
+		[TestCase("n", "艦名:         翔鶴")]
+		[TestCase("k", "艦種:       正規空母")]
+		[TestCase("nk", "艦名:         翔鶴  艦種:       正規空母")]
+		[TestCase("kn", "艦種:       正規空母  艦名:         翔鶴")]
+		public void ToStringInIFormattableTest(string format, string expected)
+		{
+			girl.ToString(format, null).Is(expected);
+		}
+
+		[Test]
+		public void ToStringWithIFormatProvider()
+		{
+			var girl = new ShipGirl { Name = "金剛", ShipKind = "戦艦" };
+			girl.ToString(null, new MyFormatter()).Is("ShipName:         金剛, ShipKind:         戦艦");
+		}
+	}
 }
