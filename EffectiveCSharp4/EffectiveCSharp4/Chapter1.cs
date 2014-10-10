@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EffectiveCSharp4.Chapter1.Topic5
 {
@@ -102,7 +97,7 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 			public string Format(string format, object arg, IFormatProvider formatProvider)
 			{
 				var c = arg as CustomerWithIFoFormattable;
-				if (c==null)
+				if (c == null)
 				{
 					return arg.ToString();
 				}
