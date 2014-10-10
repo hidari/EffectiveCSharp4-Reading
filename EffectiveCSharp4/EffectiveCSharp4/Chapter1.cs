@@ -113,7 +113,7 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 		}
 	}
 
-	public class ShipGirl:IFormattable
+	public class ShipGirl : IFormattable
 	{
 		public string ShipKind { get; set; }
 		public string Name { get; set; }
@@ -125,6 +125,14 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 
 		public string ToString(string format, IFormatProvider formatProvider)
 		{
+			if (formatProvider != null)
+			{
+				var fmt = formatProvider.GetFormat(this.GetType()) as ICustomFormatter;
+				if (fmt != null)
+				{
+					return fmt.Format(format, this, formatProvider);
+				}
+			}
 			switch (format)
 			{
 				case "k":
@@ -138,6 +146,35 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 				case "G":
 				default:
 					return string.Format("{0,10}", this.Name);
+			}
+		}
+	}
+
+	public class MyFormatter : IFormatProvider
+	{
+
+		public object GetFormat(Type formatType)
+		{
+			if (formatType == typeof(ICustomFormatter) || formatType == typeof(ShipGirl))
+			{
+				return new MyFormatProvider();
+			}
+
+			return null;
+		}
+
+		private class MyFormatProvider : ICustomFormatter
+		{
+
+			public string Format(string format, object arg, IFormatProvider formatProvider)
+			{
+				var c = arg as ShipGirl;
+				if (c == null)
+				{
+					return arg.ToString();
+				}
+
+				return string.Format("ShipName: {0,10}, ShipKind: {1,10}", c.Name, c.ShipKind);
 			}
 		}
 	}

@@ -166,5 +166,12 @@ namespace EffectiveCSharp4Test.Chapter1.Topic5
 		{
 			girl.ToString(format, null).Is(expected);
 		}
+
+		[Test]
+		public void ToStringWithIFormatProvider()
+		{
+			var girl = new ShipGirl { Name = "金剛", ShipKind = "戦艦" };
+			girl.ToString(null, new MyFormatter()).Is("ShipName:         金剛, ShipKind:         戦艦");
+		}
 	}
 }
