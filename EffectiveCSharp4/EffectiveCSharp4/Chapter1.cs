@@ -174,3 +174,8 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 		}
 	}
 }
+
+namespace EffectiveCSharp4.Chapter1.Topic6
+{
+
+}
