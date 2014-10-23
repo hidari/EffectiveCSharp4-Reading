@@ -177,5 +177,11 @@ namespace EffectiveCSharp4.Chapter1.Topic5
 
 namespace EffectiveCSharp4.Chapter1.Topic6
 {
-
+	public class B
+	{
+		public override bool Equals(object obj)
+		{
+			return base.Equals(obj);
+		}
+	}
 }
