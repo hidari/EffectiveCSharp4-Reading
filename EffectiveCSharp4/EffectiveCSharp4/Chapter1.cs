@@ -181,6 +181,12 @@ namespace EffectiveCSharp4.Chapter1.Topic6
 	{
 		public override bool Equals(object obj)
 		{
+			// まずはnullをチェックする
+			if (object.ReferenceEquals(obj, null))
+			{
+				return false;
+			}
+
 			return base.Equals(obj);
 		}
 	}
