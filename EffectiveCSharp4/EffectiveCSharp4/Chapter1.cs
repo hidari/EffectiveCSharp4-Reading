@@ -187,6 +187,11 @@ namespace EffectiveCSharp4.Chapter1.Topic6
 				return false;
 			}
 
+			if (object.ReferenceEquals(this, obj))
+			{
+				return true;
+			}
+
 			return base.Equals(obj);
 		}
 	}
